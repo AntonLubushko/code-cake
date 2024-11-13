@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class TextProcessingService {
-  simulateLangChain(text: string): string {
+  async simulateLangChain(text: string): Promise<string> {
     const responses = {
       launch: 'Preparing for launch. All systems go!',
       status: 'Status check: All systems are operational.',

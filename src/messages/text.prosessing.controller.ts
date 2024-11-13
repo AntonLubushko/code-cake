@@ -6,12 +6,14 @@ export class TextProcessingController {
   constructor(private readonly textProcessingService: TextProcessingService) {}
 
   @Post('/process-text')
-  processText(@Body('text') text: string) {
+  async processText(@Body('text') text: string) {
     if (!text) {
       throw new BadRequestException('Text is required');
     }
 
-    const processedText = this.textProcessingService.simulateLangChain(text);
+    const processedText = await this.textProcessingService.simulateLangChain(
+      text
+    );
     return { processedText };
   }
 }
